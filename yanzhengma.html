@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style type="text/css">
+    img{border: 1px solid;
+        width: 100px;height: 30px;}
+    </style>
+</head>
+<body>
+    <form action="form.php" method="post">
+    <p>验证码图片：<img id="captch_img" src="./arr1.php?r=<?php echo rand();?>">
+    <a href="javascript:void(0)" onclick="document.getElementById('captch_img').src='./arr1.php?r='+Math.random()">换一个？</a>
+    </p>
+    <p>请输入验证码：<input type="text" name="authcode" value=""></p>
+    <p><button>Submit</button></p>
+    </form>
+</body>
+</html>
