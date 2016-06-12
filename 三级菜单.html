@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yaoqiu1</title>
+    <style>
+        body{ font-size:12px; font-family:"微软雅黑";background-color: #88ddbb;}
+        ul,li{ list-style:none;}
+        .zz{ width:205px; margin:20px auto;}
+        .menu{ width:205px; margin:0 auto; border:#CCC 1px solid;background: red;}
+
+        .menu ul{padding: 0;display:none;}
+        .menu p{
+            width:200px;
+            padding-left: 5px;
+            line-height:28px;
+            display:block;margin: 0;
+            border-bottom:#CCC 1px solid;
+            background: url(images/add.jpg) no-repeat right center #EEEEEE;
+        }
+
+        .menu li{
+            line-height:28px;
+            width:200px;
+            display:block;
+            padding-left: 5px;border-bottom:#CCC 1px solid;
+            background: url(images/add.jpg) no-repeat right center red;
+        }
+        .menu span{
+            display: inline-block;
+            background-color: #58c;
+            font-size: 14px;
+            padding-left: 5px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="zz">
+    <input type="button" id="zk" value="展开/隐藏" />
+
+</div>
+
+<div class="menu" id="menu">
+
+    <p>web前端</p>
+    <ul >
+        <li>JavaScript</li>
+        <span style="display:none">js1<br>js2<br>js3</span>
+        <li>DIV+CSS</li>
+        <span style="display:none">div1<br>div2<br>div3</span>
+        <li>jQuery</li>
+        <span style="display:none">jQuery1<br>jQuery2<br>jQuery3</span>
+    </ul>
+    <p>后台脚本</p>
+    <ul>
+        <li>PHP</li>
+        <span style="display:none">PHP1<br>PHP2<br>PHP3</span>
+        <li>ASP.net</li>
+        <span style="display:none">ASP.net<br>ASP.net<br>ASP.net</span>
+        <li>JSP</li>
+        <span style="display:none">JSP<br>JSP<br>JSP</span>
+    </ul>
+
+    <p>前端框架</p>
+    <ul>
+        <li>Extjs</li>
+        <span style="display:none">jQuery1<br>jQuery2<br>jQuery3</span>
+        <li>Esspress</li>
+        <span style="display:none">jQuery1<br>jQuery2<br>jQuery3</span>
+        <li>YUI</li>
+        <span style="display:none">jQuery1<br>jQuery2<br>jQuery3</span>
+    </ul>
+
+    <p>前端框架</p>
+    <ul>
+        <li>Extjs</li>
+        <span style="display:none">jQuery1<br>jQuery2<br>jQuery3</span>
+        <li>Esspress</li>
+        <span style="display:none">jQuery1<br>jQuery2<br>jQuery3</span>
+        <li>YUI</li>
+        <span style="display:none">jQuery1<br>jQuery2<br>jQuery3</span>
+    </ul>
+</div>
+<script type="text/javascript">
+        var menu = document.getElementById("menu");
+        var pp = menu.getElementsByTagName("p"); //找到菜单P标签
+        var ul = menu.getElementsByTagName("ul"); //找到菜单对应的内容标签
+        var zk = document.getElementById("zk");
+        var li = document.getElementsByTagName("li");//获取三级菜单标签
+        var span = document.getElementsByTagName("span");
+        var len1 = li.length;   //  三级菜单长度
+        var len = pp.length;
+
+        for (var i = 0; i < len; i++) {   //二级菜单的循环
+            pp[i].id = i;
+            ul[i].id = i;
+            pp[i].onclick = function () {    //点击事件
+                cl(this.id);       //调用函数
+            }
+        }
+
+
+        for (var j = 0; j < len1; j++) {    //三级菜单的循环
+            li[j].id = j;
+            span[j].id = j;
+            li[j].onclick = function () {
+                cl3(this.id);   //三级菜单事件传值
+            }
+        }
+
+        function cl3(m) {
+            if (span[m].style.display == "block") {
+                span[m].style.display = "none";
+                li[m].style.backgroundImage = "url(images/add.jpg)"
+            }
+            else {
+                span[m].style.display = "block";
+                li[m].style.backgroundImage = "url(images/plus.jpg)"
+            }
+        }
+
+
+        function cl(m) {   //点击函数
+            if (ul[m].style.display == "block") {
+                ul[m].style.display = "none";
+                pp[m].style.backgroundImage = "url(images/add.jpg)";
+            }
+            else {
+                ul[m].style.display = "block";
+                pp[m].style.backgroundImage = "url(images/plus.jpg)";
+            }
+        }
+
+        var flag = 1;
+        zk.onclick = function (){//全部展开
+        if(flag<0){//第一次点击，展开，flag==0；第二次点击，折叠，flag==-1；
+            flag=1;//不加这个if，按钮点击两次失效
+        }
+        for (var i = 0; i < len; i++) {
+            if (flag) {
+                ul[i].style.display = "block";
+                pp[i].style.backgroundImage = "url(images/plus.jpg)";
+            }
+            else {
+                ul[i].style.display = "none";
+                pp[i].style.backgroundImage = "url(images/add.jpg)";
+
+            }
+        }
+        flag--;
+    }
+</script>
+</body>
+</html>
