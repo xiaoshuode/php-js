@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yaoqiu</title>
+    <style type="text/css">
+        body{
+            background-color: #88ddbb;  }
+        input {box-shadow: 1px 1px 2px 2px #333333;
+            outline: none; border-radius: 15px;padding: 10px;text-align: center;}
+        div {margin: 30px auto;}
+        #output3 {
+            width: 180px;height: 50px;border: 1px solid #EEEEEE;float: left;
+            margin: 0 auto;text-align: center;line-height: 50px;
+            border-radius: 15px;
+            box-shadow: 1px 1px 2px 2px #333333;
+        }
+        #text{
+            margin: 90px auto 30px;
+            box-shadow: 1px 1px 2px 2px #333333;
+        }
+        #btn {
+            margin-left: 30px;
+            float: left;
+        }
+        .clearfloat {
+            content: ".";
+            width: 0;clear: both;
+        }
+        .btn {
+            margin-top: -500px;
+        }
+    </style>
+    <script type="text/javascript">
+        function wjm(){
+            var str_input = document.getElementById("input");
+            var str_output = document.getElementById("output");
+            var wenjian = str_input.value.split("\\");
+            if(str_input.value.indexOf("/")>=0){
+                alert("请输入正确的路径名！");
+            }else if(str_input.value ==""){
+                alert("请输入！");
+            }
+            else {
+                str_output.value = wenjian[wenjian.length-1];
+            }
+        }
+        function wjtzm(){
+            var str_input = document.getElementById("input2");
+            var str_output = document.getElementById("output2");
+            var wenjian = str_input.value.split(".");
+            if(str_input.value.indexOf(".") == 0){
+                alert("请输入正确的文件名！");
+            }
+            else if(str_input.value ==""){
+                alert("请输入！");
+            }
+            else {
+                str_output.value = wenjian[wenjian.length-1];
+            }
+        }
+        function yanzhengma(){
+            var str_output = document.getElementById("output3");
+            var btn = document.getElementById("btn");
+            var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            var len = 10;//验证码长度
+            var array = '';
+            var r = parseInt(Math.random()*256);
+            var g = parseInt(Math.random()*256);
+            var b = parseInt(Math.random()*256);
+            str_output.style.backgroundColor = "rgb("+r+","+g+","+b+")";
+            for(len;len>0;len--){
+                var i = parseInt(Math.random()*61);//去掉小数
+                array =array.concat(str.substring(i,i+1));
+            }
+            str_output.innerHTML = array;
+        }
+        function change(){
+            var str_old = document.getElementById("text");
+            str_old.innerHTML= str_old.innerHTML.replace(/李白/g,"<span style='color:red'>杜甫</span>");
+        }
+    </script>
+</head>
+<body>
+<div class="">
+    <input type="text" id="input" value="" placeholder="请输入文件目录">
+    <input type="button" id="" value="点击得到文件名" onclick="wjm()">
+    <input type="text" id="output" value="">
+</div>
+    <input type="text" id="input2" value="" placeholder="请输入文件名">
+    <input type="button"  value="点击得到拓展名" onclick="wjtzm()">
+    <input type="text" id="output2" value="">
+<div>
+    <div id="output3"></div>
+    <input type="button" id="btn"  value="点击得到验证码" onclick="yanzhengma()">
+</div>
+<div class="clearfloat"></div>
+<div >
+    <div id="text" >
+        李白701年－762年[1]  字太白号青莲居士又号谪仙人汉族，绵州昌隆县（今四川省江油市人是唐代伟大的浪漫主义诗人，被后人誉为诗仙。与杜甫并称为李杜，为了与另两位诗人李商隐与杜牧即小李杜区别，杜甫与李白又合称大李杜。其人爽朗大方，爱饮酒作诗，喜交友。李白深受黄老列庄思想影响，有《李太白集》传世，诗作中多以醉时写的，代表作有《望庐山瀑布》、《行路难》、《蜀道难》、《将进酒》、《梁甫吟》、《早发白帝城》等多首。李白所作词赋，宋人已有传记（如文莹《湘山野录》卷上），就其开创意义及艺术成就而言李白词享有极为崇高的地位"
+    </div>
+    <input type="button" class="btn" value="李白变杜甫" onclick="change()">
+</div>
+</body>
+</html>
